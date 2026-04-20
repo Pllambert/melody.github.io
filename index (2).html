@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Melody — Venture & Technology Investment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF8F4;
+      --ink: #1A1814;
+      --mid: #6B6760;
+      --accent: #B8A898;
+      --rule: #E2DDD7;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 28px 60px;
+      background: var(--cream);
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+    nav.scrolled { border-color: var(--rule); }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.25rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    section { padding: 140px 60px; }
+
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 120px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s forwards;
+    }
+
+    .hero-headline {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.01em;
+      max-width: 860px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.4s forwards;
+    }
+
+    .hero-headline em { font-style: italic; color: var(--mid); }
+
+    .hero-sub {
+      margin-top: 48px;
+      font-size: 0.95rem;
+      color: var(--mid);
+      max-width: 500px;
+      line-height: 1.8;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.6s forwards;
+    }
+
+    .hero-cta {
+      margin-top: 56px;
+      opacity: 0;
+      animation: fadeUp 0.9s 0.8s forwards;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      border: 1px solid var(--ink);
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      transition: background 0.25s, color 0.25s;
+    }
+    .btn:hover { background: var(--ink); color: var(--cream); }
+
+    .hero-rule {
+      position: absolute;
+      right: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 1px;
+      height: 40vh;
+      background: var(--rule);
+      opacity: 0;
+      animation: fadeIn 1.2s 1s forwards;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      padding-top: 6px;
+    }
+
+    /* THESIS */
+    #thesis { border-top: 1px solid var(--rule); }
+
+    .thesis-header { margin-bottom: 72px; }
+
+    .thesis-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      margin-top: 20px;
+    }
+
+    .thesis-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .thesis-card {
+      background: var(--cream);
+      padding: 52px 48px;
+    }
+
+    .thesis-card-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .thesis-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.8rem;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .thesis-card h3 em { font-style: italic; color: var(--mid); }
+
+    .thesis-card p {
+      font-size: 0.875rem;
+      color: var(--mid);
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    /* ABOUT */
+    #about {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+      align-items: start;
+      border-top: 1px solid var(--rule);
+    }
+
+    .col-body h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 32px;
+    }
+    .col-body h2 em { font-style: italic; color: var(--mid); }
+
+    .col-body p {
+      color: var(--mid);
+      margin-bottom: 20px;
+      font-size: 0.95rem;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      margin-top: 56px;
+      border: 1px solid var(--rule);
+    }
+
+    .stat { background: var(--cream); padding: 32px 28px; }
+
+    .stat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--mid);
+    }
+
+    /* PORTFOLIO */
+    #portfolio { border-top: 1px solid var(--rule); }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 72px;
+    }
+
+    .section-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .portfolio-card {
+      background: var(--cream);
+      padding: 44px 40px;
+      transition: background 0.25s;
+    }
+    .portfolio-card:hover { background: #F5F1EB; }
+
+    .portfolio-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.6rem;
+      font-weight: 300;
+      margin-bottom: 12px;
+    }
+
+    .portfolio-desc {
+      font-size: 0.85rem;
+      color: var(--mid);
+      line-height: 1.7;
+    }
+
+    .portfolio-note {
+      margin-top: 24px;
+      font-size: 0.78rem;
+      color: var(--accent);
+    }
+
+    /* TEAM */
+    #team { border-top: 1px solid var(--rule); }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .team-card {
+      background: var(--cream);
+      padding: 48px 40px;
+      transition: background 0.25s;
+    }
+    .team-card:hover { background: #F5F1EB; }
+
+    .team-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 300;
+      margin-bottom: 4px;
+    }
+
+    .team-title {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .team-bio {
+      font-size: 0.875rem;
+      color: var(--mid);
+      line-height: 1.75;
+    }
+
+    .team-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 28px;
+    }
+
+    .tag {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--rule);
+      padding: 5px 12px;
+      color: var(--mid);
+    }
+
+    /* CONTACT */
+    #contact {
+      border-top: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-left h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .contact-left p {
+      font-size: 0.9rem;
+      color: var(--mid);
+      line-height: 1.8;
+    }
+
+    .form-group { margin-bottom: 24px; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-bottom: 10px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--rule);
+      padding: 10px 0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus { border-color: var(--ink); }
+
+    .form-group textarea { resize: none; height: 100px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+
+    .submit-btn {
+      margin-top: 16px;
+      width: 100%;
+      padding: 16px;
+      background: var(--ink);
+      color: var(--cream);
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+    .submit-btn:hover { background: #2e2b26; }
+    .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .form-note {
+      margin-top: 14px;
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-align: center;
+    }
+
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 40px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .footer-copy { font-size: 0.75rem; color: var(--accent); }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 860px) {
+      nav { padding: 24px 28px; }
+      .nav-links { display: none; }
+      section { padding: 100px 28px; }
+      #about, #contact { grid-template-columns: 1fr; gap: 48px; }
+      .thesis-grid, .portfolio-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; gap: 0; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      footer { padding: 32px 28px; flex-direction: column; gap: 12px; text-align: center; }
+      .hero-rule { display: none; }
+      .thesis-card { padding: 40px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">Melody</a>
+    <ul class="nav-links">
+      <li><a href="#thesis">Thesis</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <p class="hero-label">Venture & Technology Investment · Jain Family Office</p>
+    <h1 class="hero-headline">
+      Backing the companies<br>
+      <em>intelligence</em> is building —<br>
+      and rebuilding
+    </h1>
+    <p class="hero-sub">
+      Melody is the tech and venture arm of the Jain Family Office. We invest in companies where AI is the product edge, and in businesses where AI can become the operating edge.
+    </p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn">Get in touch</a>
+    </div>
+    <div class="hero-rule"></div>
+  </section>
+
+  <!-- THESIS -->
+  <section id="thesis">
+    <div class="thesis-header reveal">
+      <div class="section-label">Investment Thesis</div>
+      <h2>Two ways AI creates value</h2>
+    </div>
+    <div class="thesis-grid">
+      <div class="thesis-card reveal">
+        <div class="thesis-card-label">I — Product Edge</div>
+        <h3>AI as the<br><em>core advantage</em></h3>
+        <p>
+          Melody takes outsized positions in companies where AI is the central product differentiator — not a feature, but the foundation.
+        </p>
+        <p>
+          We are hands-on, operator-led investors. We help build, scale, and support these businesses closely, drawing on direct experience founding and running AI-native companies.
+        </p>
+      </div>
+      <div class="thesis-card reveal">
+        <div class="thesis-card-label">II — Operating Edge</div>
+        <h3>AI as the<br><em>turnaround lever</em></h3>
+        <p>
+          Melody also backs businesses where AI can create significant operational leverage — including distressed, underperforming, or transformation situations.
+        </p>
+        <p>
+          The strategy: deploy AI, automation, and hands-on operating support to improve efficiency and return businesses to profitability. This draws directly on the Jain Family Office's 20-year track record in operational turnarounds and distressed situations.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-label reveal">About</div>
+    <div class="col-body reveal">
+      <h2>The <em>Jain Family Office</em></h2>
+      <p>
+        Melody is the tech and venture arm of the Jain Family Office — a private investment platform with a long track record in operating and investing across businesses at different stages of growth and transformation.
+      </p>
+      <p>
+        The Jain Family Office has completed 15+ transactions over 20 years, with particular depth in operational turnarounds, distressed buyouts, and value creation through active ownership.
+      </p>
+      <p>
+        Melody draws on this heritage — combining the family office's patient capital and operational experience with a conviction-led approach to AI investment.
+      </p>
+      <div class="stats-grid">
+        <div class="stat">
+          <div class="stat-value">£300m</div>
+          <div class="stat-label">Jain Family Office AUM</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">£20m</div>
+          <div class="stat-label">Melody AUM</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">15+</div>
+          <div class="stat-label">Transactions over 20 years</div>
+        </div>
+        <div class="stat">
+          <div class="stat-value">Global</div>
+          <div class="stat-label">Investment reach</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="section-header reveal">
+      <h2>Portfolio</h2>
+      <span class="section-label">Melody companies</span>
+    </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card reveal">
+        <div class="portfolio-name">Logically</div>
+        <p class="portfolio-desc">AI-powered decision intelligence for leaders. Helping organisations navigate the information environment with greater speed and clarity.</p>
+      </div>
+      <div class="portfolio-card reveal">
+        <div class="portfolio-name">Vixr</div>
+        <p class="portfolio-desc">AI-powered pre-market trading intelligence. Giving professional traders a meaningful edge before markets open.</p>
+      </div>
+      <div class="portfolio-card reveal">
+        <div class="portfolio-name">Thalia</div>
+        <p class="portfolio-desc">Portfolio company of Melody. Details available on request.</p>
+      </div>
+    </div>
+    <p class="portfolio-note reveal">Melody portfolio companies are distinct from the broader Jain Family Office investment portfolio.</p>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team">
+    <div class="section-header reveal">
+      <h2>Team</h2>
+      <span class="section-label">Led by operators</span>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal">
+        <div class="team-name">Lyric Jain</div>
+        <div class="team-title">Founder & Managing Partner</div>
+        <p class="team-bio">
+          Serial founder with two companies built from zero: Logically, AI-powered decision intelligence for leaders, and Vixr, an AI-powered pre-market trading intelligence platform. Engineer by training, operator by instinct.
+        </p>
+        <div class="team-tags">
+          <span class="tag">Forbes 30 Under 30</span>
+          <span class="tag">MIT</span>
+          <span class="tag">Cambridge</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-left reveal">
+      <p class="section-label">Contact</p>
+      <h2>Let's talk</h2>
+      <p>
+        If you're building something where AI is the edge — as a product or as an operating advantage — we'd like to hear from you.
+      </p>
+    </div>
+    <div class="reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your name" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="your@email.com" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="company">Company</label>
+        <input type="text" id="company" placeholder="Company name" />
+      </div>
+      <div class="form-group">
+        <label for="stage">Stage</label>
+        <select id="stage">
+          <option value="" disabled selected>Select stage</option>
+          <option>Pre-seed</option>
+          <option>Seed</option>
+          <option>Series A</option>
+          <option>Growth</option>
+          <option>Distressed / Turnaround</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Tell us what you're building"></textarea>
+      </div>
+      <button class="submit-btn" id="submit-btn" onclick="handleSubmit()">Send message</button>
+      <p class="form-note" id="form-note"></p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-logo">Melody</div>
+    <div class="footer-copy">© 2026 Melody. The venture and technology arm of the Jain Family Office.</div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    async function handleSubmit() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const company = document.getElementById('company').value.trim();
+      const stage = document.getElementById('stage').value;
+      const message = document.getElementById('message').value.trim();
+      const note = document.getElementById('form-note');
+      const btn = document.getElementById('submit-btn');
+
+      if (!name || !email) {
+        note.style.color = '#b08080';
+        note.textContent = 'Please fill in your name and email.';
+        return;
+      }
+
+      btn.textContent = 'Sending…';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('https://formspree.io/f/xeepzlgv', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, company, stage, message,
+            _replyto: email,
+            _subject: `New enquiry from ${name} — Melody` })
+        });
+
+        if (res.ok) {
+          note.style.color = '#8a9e8a';
+          note.textContent = 'Message received — we\'ll be in touch.';
+          btn.textContent = 'Sent';
+          ['name','email','company','message'].forEach(id => document.getElementById(id).value = '');
+          document.getElementById('stage').selectedIndex = 0;
+        } else {
+          throw new Error('Failed');
+        }
+      } catch {
+        note.style.color = '#b08080';
+        note.textContent = 'Something went wrong — please try again.';
+        btn.textContent = 'Send message';
+        btn.disabled = false;
+      }
+    }
+  </script>
+
+</body>
+</html>
