@@ -1,6 +1,6 @@
 const MELODY_SUPABASE_URL = 'https://izecxzeqymahgonfhwvb.supabase.co';
 const MELODY_SUPABASE_KEY = 'sb_publishable_qQ02IHDxYLRkJzlH05aUAQ_L4RG44jS';
-const MELODY_EMPLOYEE_DOMAIN = 'melodyvc.com';
+const MELODY_EMPLOYEE_DOMAINS = ['melodyvc.com', 'vixr.ai'];
 
 const melodyAuth = window.supabase.createClient(MELODY_SUPABASE_URL, MELODY_SUPABASE_KEY);
 
@@ -14,7 +14,7 @@ function getEmployeeEmail(session) {
 
 function isMelodyEmployee(session) {
   const email = getEmployeeEmail(session).toLowerCase();
-  return email.endsWith(`@${MELODY_EMPLOYEE_DOMAIN}`);
+  return MELODY_EMPLOYEE_DOMAINS.some((domain) => email.endsWith(`@${domain}`));
 }
 
 async function signInWithGoogle() {
