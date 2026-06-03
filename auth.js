@@ -1,10 +1,40 @@
 const MELODY_SUPABASE_URL = 'https://izecxzeqymahgonfhwvb.supabase.co';
 const MELODY_SUPABASE_KEY = 'sb_publishable_qQ02IHDxYLRkJzlH05aUAQ_L4RG44jS';
 const MELODY_EMPLOYEE_DOMAINS = ['melodyvc.com', 'vixr.ai'];
+const MELODY_TRUSTED_APP_ORIGINS = ['https://maestro.melodyvc.com'];
 
 const melodyAuth = window.supabase.createClient(MELODY_SUPABASE_URL, MELODY_SUPABASE_KEY);
 
+function getTrustedNextUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const next = params.get('next');
+
+  if (!next) {
+    return null;
+  }
+
+  try {
+    const nextUrl = new URL(next);
+
+    if (MELODY_TRUSTED_APP_ORIGINS.includes(nextUrl.origin)) {
+      return nextUrl;
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
 function getAuthRedirectUrl() {
+  const trustedNextUrl = getTrustedNextUrl();
+
+  if (trustedNextUrl) {
+    const callbackUrl = new URL('/auth/callback', trustedNextUrl.origin);
+    callbackUrl.searchParams.set('next', `${trustedNextUrl.pathname}${trustedNextUrl.search}`);
+    return callbackUrl.href;
+  }
+
   return new URL('auth/callback.html', window.location.origin).href;
 }
 

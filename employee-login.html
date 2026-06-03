@@ -277,8 +277,13 @@
       }
     });
 
-    melodyAuth.auth.getSession().then(({ data }) => {
+    melodyAuth.auth.getSession().then(async ({ data }) => {
       if (isMelodyEmployee(data.session)) {
+        if (getTrustedNextUrl()) {
+          await signInWithGoogle();
+          return;
+        }
+
         window.location.replace('apps.html');
       }
     });
