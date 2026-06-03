@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accessibility Statement | Melody</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #FAF8F4;
+      --ink: #1A1814;
+      --mid: #6B6760;
+      --accent: #8A7E72;
+      --rule: #E2DDD7;
+      --paper: #FFFFFF;
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    nav, footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 28px 60px;
+      border-bottom: 1px solid var(--rule);
+    }
+    footer {
+      border-top: 1px solid var(--rule);
+      border-bottom: none;
+    }
+    .brand {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 0.74rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .links a {
+      color: var(--mid);
+      text-decoration: none;
+    }
+    .links a:hover { color: var(--ink); }
+    main {
+      width: min(880px, calc(100% - 56px));
+      margin: 0 auto;
+      padding: 90px 0;
+    }
+    .label {
+      color: var(--accent);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    h1, h2 {
+      font-family: var(--serif);
+      font-weight: 300;
+      line-height: 1.12;
+    }
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      margin-bottom: 26px;
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin: 52px 0 16px;
+    }
+    p, li {
+      color: var(--mid);
+      font-size: 0.96rem;
+    }
+    ul {
+      display: grid;
+      gap: 10px;
+      margin: 14px 0 0 20px;
+    }
+    a { color: var(--ink); text-underline-offset: 3px; }
+    .updated {
+      color: var(--accent);
+      font-size: 0.8rem;
+      margin-top: 10px;
+    }
+    @media (max-width: 760px) {
+      nav, footer {
+        padding: 24px 28px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      main { padding: 64px 0; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="brand">Melody</a>
+    <div class="links" aria-label="Site links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="cookies.html">Cookies</a>
+    </div>
+  </nav>
+
+  <main>
+    <p class="label">Accessibility Statement</p>
+    <h1>Making Melody usable for everyone</h1>
+    <p>
+      Melody aims to make this website accessible and usable for visitors with disabilities, including people using assistive technologies.
+    </p>
+    <p class="updated">Last updated: June 3, 2026</p>
+
+    <h2>Our target</h2>
+    <p>
+      The site is designed with WCAG 2.2 AA principles in mind, including readable structure, keyboard-accessible links and controls, semantic HTML, responsive layouts, and sufficient text contrast.
+    </p>
+
+    <h2>Current measures</h2>
+    <ul>
+      <li>Pages use semantic headings, labels, and landmark-style structure.</li>
+      <li>Forms include visible labels and clear error messages.</li>
+      <li>Navigation and app cards can be reached with a keyboard.</li>
+      <li>Text uses local system fonts and scalable layouts.</li>
+      <li>No autoplaying media, flashing content, or forced motion is used.</li>
+    </ul>
+
+    <h2>Known limitations</h2>
+    <p>
+      This is an early static site and has not yet been audited by an external accessibility specialist. As the employee apps and authentication experience become real products, those surfaces should be tested separately.
+    </p>
+
+    <h2>Feedback</h2>
+    <p>
+      If you find an accessibility issue, email <a href="mailto:privacy@melodyvc.com">privacy@melodyvc.com</a> with the page URL, a description of the issue, and the assistive technology or browser you were using if relevant.
+    </p>
+  </main>
+
+  <footer>
+    <div class="brand">Melody</div>
+    <div class="links" aria-label="Legal links">
+      <a href="privacy.html">Privacy</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="accessibility.html">Accessibility</a>
+    </div>
+  </footer>
+</body>
+</html>

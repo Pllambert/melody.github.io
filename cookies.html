@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cookie Notice | Melody</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #FAF8F4;
+      --ink: #1A1814;
+      --mid: #6B6760;
+      --accent: #8A7E72;
+      --rule: #E2DDD7;
+      --paper: #FFFFFF;
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    nav, footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 28px 60px;
+      border-bottom: 1px solid var(--rule);
+    }
+    footer {
+      border-top: 1px solid var(--rule);
+      border-bottom: none;
+    }
+    .brand {
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 0.74rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .links a {
+      color: var(--mid);
+      text-decoration: none;
+    }
+    .links a:hover { color: var(--ink); }
+    main {
+      width: min(880px, calc(100% - 56px));
+      margin: 0 auto;
+      padding: 90px 0;
+    }
+    .label {
+      color: var(--accent);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    h1, h2 {
+      font-family: var(--serif);
+      font-weight: 300;
+      line-height: 1.12;
+    }
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      margin-bottom: 26px;
+    }
+    h2 {
+      font-size: 1.8rem;
+      margin: 52px 0 16px;
+    }
+    p, li {
+      color: var(--mid);
+      font-size: 0.96rem;
+    }
+    ul {
+      display: grid;
+      gap: 10px;
+      margin: 14px 0 0 20px;
+    }
+    .notice-box {
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      padding: 28px;
+      margin: 34px 0;
+    }
+    .updated {
+      color: var(--accent);
+      font-size: 0.8rem;
+      margin-top: 10px;
+    }
+    @media (max-width: 760px) {
+      nav, footer {
+        padding: 24px 28px;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      main { padding: 64px 0; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html" class="brand">Melody</a>
+    <div class="links" aria-label="Site links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="accessibility.html">Accessibility</a>
+    </div>
+  </nav>
+
+  <main>
+    <p class="label">Cookie Notice</p>
+    <h1>Cookies and similar technologies</h1>
+    <p>
+      This notice explains what browser storage and similar technologies are used on the Melody website.
+    </p>
+    <p class="updated">Last updated: June 3, 2026</p>
+
+    <div class="notice-box">
+      <p>
+        Melody does not set analytics, advertising, profiling, or marketing cookies on this website. Because no non-essential cookies are set by Melody, the site does not display a consent banner.
+      </p>
+    </div>
+
+    <h2>Strictly necessary processing</h2>
+    <p>
+      Hosting providers may process basic technical information, such as IP address, requested page, browser details, and timestamps, to deliver the site, maintain security, and diagnose service issues. This is necessary for the website to function.
+    </p>
+
+    <h2>Contact form</h2>
+    <p>
+      The contact form submits information to Formspree only when a visitor chooses to send a message. Formspree may use technical measures needed to deliver and protect the form service.
+    </p>
+
+    <h2>Employee login</h2>
+    <p>
+      Employee access uses Google sign-in for approved team accounts. Google may set cookies or use similar technologies as part of its authentication service.
+    </p>
+
+    <h2>Analytics and marketing</h2>
+    <p>
+      Melody does not load analytics, advertising, or marketing tracking on this website. Any non-essential tracking introduced by Melody should be presented with clear information and consent controls before it is used for UK and EU visitors.
+    </p>
+  </main>
+
+  <footer>
+    <div class="brand">Melody</div>
+    <div class="links" aria-label="Legal links">
+      <a href="privacy.html">Privacy</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="accessibility.html">Accessibility</a>
+    </div>
+  </footer>
+</body>
+</html>

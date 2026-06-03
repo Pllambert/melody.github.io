@@ -4,9 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Melody — Venture & Technology Investment</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -16,6 +13,8 @@
       --mid: #6B6760;
       --accent: #B8A898;
       --rule: #E2DDD7;
+      --serif: Georgia, 'Times New Roman', serif;
+      --sans: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     }
 
     html { scroll-behavior: smooth; }
@@ -23,7 +22,7 @@
     body {
       background: var(--cream);
       color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--sans);
       font-weight: 300;
       font-size: 16px;
       line-height: 1.7;
@@ -45,7 +44,7 @@
     nav.scrolled { border-color: var(--rule); }
 
     .nav-logo {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--serif);
       font-weight: 300;
       font-size: 1.25rem;
       letter-spacing: 0.08em;
@@ -68,6 +67,16 @@
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--ink); }
+
+    .employee-link {
+      border: 1px solid var(--rule);
+      padding: 9px 14px;
+    }
+    .employee-link:hover {
+      border-color: var(--ink);
+      background: var(--ink);
+      color: var(--cream) !important;
+    }
 
     section { padding: 140px 60px; }
 
@@ -92,7 +101,7 @@
     }
 
     .hero-headline {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--serif);
       font-weight: 300;
       font-size: clamp(3rem, 7vw, 6.5rem);
       line-height: 1.08;
@@ -159,7 +168,7 @@
     .thesis-header { margin-bottom: 72px; }
 
     .thesis-header h2 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--serif);
       font-weight: 300;
       font-size: clamp(2rem, 3.5vw, 3rem);
       margin-top: 20px;
@@ -187,7 +196,7 @@
     }
 
     .thesis-card h3 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--serif);
       font-weight: 300;
       font-size: 1.8rem;
       line-height: 1.2;
@@ -213,7 +222,7 @@
     }
 
     .col-body h2 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--serif);
       font-weight: 300;
       font-size: clamp(2rem, 3.5vw, 3rem);
       line-height: 1.2;
@@ -239,7 +248,7 @@
     .stat { background: var(--cream); padding: 32px 28px; }
 
     .stat-value {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--serif);
       font-size: 2.2rem;
       font-weight: 300;
       line-height: 1;
@@ -264,7 +273,7 @@
     }
 
     .section-header h2 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--serif);
       font-weight: 300;
       font-size: clamp(2rem, 3.5vw, 3rem);
     }
@@ -285,7 +294,7 @@
     .portfolio-card:hover { background: #F5F1EB; }
 
     .portfolio-name {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--serif);
       font-size: 1.6rem;
       font-weight: 300;
       margin-bottom: 12px;
@@ -322,7 +331,7 @@
     .team-card:hover { background: #F5F1EB; }
 
     .team-name {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--serif);
       font-size: 1.7rem;
       font-weight: 300;
       margin-bottom: 4px;
@@ -368,7 +377,7 @@
     }
 
     .contact-left h2 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--serif);
       font-weight: 300;
       font-size: clamp(2rem, 3.5vw, 3rem);
       line-height: 1.2;
@@ -400,7 +409,7 @@
       border: none;
       border-bottom: 1px solid var(--rule);
       padding: 10px 0;
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--sans);
       font-size: 0.9rem;
       font-weight: 300;
       color: var(--ink);
@@ -423,7 +432,7 @@
       background: var(--ink);
       color: var(--cream);
       border: none;
-      font-family: 'DM Sans', sans-serif;
+      font-family: var(--sans);
       font-size: 0.78rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
@@ -440,6 +449,35 @@
       text-align: center;
     }
 
+    .collection-notice {
+      margin: 6px 0 18px;
+      color: var(--mid);
+      font-size: 0.8rem;
+      line-height: 1.65;
+    }
+    .collection-notice a,
+    .privacy-check a {
+      color: var(--ink);
+      text-underline-offset: 3px;
+    }
+
+    .privacy-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 8px 0 24px;
+      color: var(--mid);
+      font-size: 0.82rem;
+      line-height: 1.65;
+    }
+    .privacy-check input {
+      width: 18px;
+      height: 18px;
+      margin-top: 4px;
+      accent-color: var(--ink);
+      flex: 0 0 auto;
+    }
+
     footer {
       border-top: 1px solid var(--rule);
       padding: 40px 60px;
@@ -449,7 +487,7 @@
     }
 
     .footer-logo {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--serif);
       font-weight: 300;
       font-size: 1rem;
       letter-spacing: 0.1em;
@@ -457,6 +495,22 @@
     }
 
     .footer-copy { font-size: 0.75rem; color: var(--accent); }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 18px;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .footer-links a {
+      color: var(--mid);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--ink); }
 
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -486,6 +540,7 @@
       .form-row { grid-template-columns: 1fr; gap: 0; }
       .stats-grid { grid-template-columns: 1fr 1fr; }
       footer { padding: 32px 28px; flex-direction: column; gap: 12px; text-align: center; }
+      .footer-links { justify-content: center; }
       .hero-rule { display: none; }
       .thesis-card { padding: 40px 28px; }
     }
@@ -501,6 +556,7 @@
       <li><a href="#portfolio">Portfolio</a></li>
       <li><a href="#team">Team</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="employee-login.html" class="employee-link">Employee Login</a></li>
     </ul>
   </nav>
 
@@ -642,16 +698,16 @@
       <div class="form-row">
         <div class="form-group">
           <label for="name">Name</label>
-          <input type="text" id="name" placeholder="Your name" />
+          <input type="text" id="name" />
         </div>
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" id="email" placeholder="your@email.com" />
+          <input type="email" id="email" />
         </div>
       </div>
       <div class="form-group">
         <label for="company">Company</label>
-        <input type="text" id="company" placeholder="Company name" />
+        <input type="text" id="company" />
       </div>
       <div class="form-group">
         <label for="stage">Stage</label>
@@ -667,8 +723,15 @@
       </div>
       <div class="form-group">
         <label for="message">Message</label>
-        <textarea id="message" placeholder="Tell us what you're building"></textarea>
+        <textarea id="message"></textarea>
       </div>
+      <p class="collection-notice">
+        Notice at collection: Melody uses the details you provide to respond to your enquiry and assess potential investment or partnership fit. We do not sell or share this information for cross-context behavioural advertising. See our <a href="privacy.html">Privacy Notice</a>.
+      </p>
+      <label class="privacy-check">
+        <input type="checkbox" id="privacy-ack" />
+        <span>I understand that Melody will process my enquiry in line with the Privacy Notice.</span>
+      </label>
       <button class="submit-btn" id="submit-btn" onclick="handleSubmit()">Send message</button>
       <p class="form-note" id="form-note"></p>
     </div>
@@ -677,6 +740,11 @@
   <footer>
     <div class="footer-logo">Melody</div>
     <div class="footer-copy">© 2026 Melody. The venture and technology arm of the Jain Family Office.</div>
+    <div class="footer-links" aria-label="Legal links">
+      <a href="privacy.html">Privacy</a>
+      <a href="cookies.html">Cookies</a>
+      <a href="accessibility.html">Accessibility</a>
+    </div>
   </footer>
 
   <script>
@@ -702,12 +770,19 @@
       const company = document.getElementById('company').value.trim();
       const stage = document.getElementById('stage').value;
       const message = document.getElementById('message').value.trim();
+      const privacyAck = document.getElementById('privacy-ack').checked;
       const note = document.getElementById('form-note');
       const btn = document.getElementById('submit-btn');
 
       if (!name || !email) {
         note.style.color = '#b08080';
         note.textContent = 'Please fill in your name and email.';
+        return;
+      }
+
+      if (!privacyAck) {
+        note.style.color = '#b08080';
+        note.textContent = 'Please acknowledge the Privacy Notice before sending.';
         return;
       }
 
@@ -729,6 +804,7 @@
           btn.textContent = 'Sent';
           ['name','email','company','message'].forEach(id => document.getElementById(id).value = '');
           document.getElementById('stage').selectedIndex = 0;
+          document.getElementById('privacy-ack').checked = false;
         } else {
           throw new Error('Failed');
         }

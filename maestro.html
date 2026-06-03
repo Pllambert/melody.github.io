@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>MAESTRO | Melody</title>
+  <link rel="stylesheet" href="app-status.css" />
+</head>
+<body data-auth-pending="true">
+  <nav>
+    <a href="index.html" class="nav-logo">Melody</a>
+    <div class="nav-links">
+      <a href="apps.html" class="nav-link">Apps</a>
+      <button class="nav-link" id="sign-out-btn" type="button">Sign out</button>
+    </div>
+  </nav>
+
+  <main>
+    <section>
+      <p class="section-label">Operations Command</p>
+      <h1>MAESTRO is almost <em>ready</em></h1>
+      <p class="intro">
+        MAESTRO will turn diligence into plans, workstreams, KPIs, and execution rhythms that move companies toward profitability.
+      </p>
+    </section>
+
+    <aside class="status-card" aria-labelledby="status-title">
+      <div class="status-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16" />
+          <path d="M4 12h16" />
+          <path d="M4 18h16" />
+          <circle cx="8" cy="6" r="2" />
+          <circle cx="16" cy="12" r="2" />
+          <circle cx="11" cy="18" r="2" />
+        </svg>
+      </div>
+      <h2 id="status-title">Coming soon</h2>
+      <p>
+        The MAESTRO workspace is being prepared for approved Melody employees.
+      </p>
+      <p class="destination">maestro.melodyvc.com</p>
+    </aside>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="auth.js"></script>
+  <script>
+    async function guardAppStatusPage() {
+      const { data } = await melodyAuth.auth.getSession();
+
+      if (!data.session) {
+        window.location.replace('employee-login.html');
+        return;
+      }
+
+      if (!isMelodyEmployee(data.session)) {
+        await melodyAuth.auth.signOut();
+        window.location.replace('employee-login.html?status=unauthorized');
+        return;
+      }
+
+      document.body.removeAttribute('data-auth-pending');
+    }
+
+    document.getElementById('sign-out-btn').addEventListener('click', async () => {
+      await melodyAuth.auth.signOut();
+      window.location.replace('employee-login.html?status=signed_out');
+    });
+
+    guardAppStatusPage();
+  </script>
+</body>
+</html>
