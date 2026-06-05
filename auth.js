@@ -2,7 +2,6 @@ const MELODY_SUPABASE_URL = 'https://izecxzeqymahgonfhwvb.supabase.co';
 const MELODY_SUPABASE_KEY = 'sb_publishable_qQ02IHDxYLRkJzlH05aUAQ_L4RG44jS';
 const MELODY_EMPLOYEE_DOMAINS = ['melodyvc.com', 'vixr.ai'];
 const MELODY_TRUSTED_APP_ORIGINS = [
-  'https://maestro-web-tau.vercel.app',
   'https://maestro.melodyvc.com'
 ];
 
