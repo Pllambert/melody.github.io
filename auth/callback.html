@@ -79,6 +79,13 @@
         return;
       }
 
+      const trustedNextUrl = getTrustedNextUrl();
+
+      if (trustedNextUrl) {
+        window.location.replace(trustedNextUrl.href);
+        return;
+      }
+
       window.location.replace('../apps.html');
     }
 

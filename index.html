@@ -749,6 +749,14 @@
   </footer>
 
   <script>
+    if (
+      window.location.hash.includes('access_token=') ||
+      window.location.hash.includes('refresh_token=')
+    ) {
+      window.history.replaceState(null, document.title, `${window.location.pathname}${window.location.search}`);
+      window.location.replace('employee-login.html?status=auth_error');
+    }
+
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 40);

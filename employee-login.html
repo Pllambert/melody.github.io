@@ -279,8 +279,10 @@
 
     melodyAuth.auth.getSession().then(async ({ data }) => {
       if (isMelodyEmployee(data.session)) {
-        if (getTrustedNextUrl()) {
-          await signInWithGoogle();
+        const trustedNextUrl = getTrustedNextUrl();
+
+        if (trustedNextUrl) {
+          window.location.replace(trustedNextUrl.href);
           return;
         }
 

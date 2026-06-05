@@ -30,14 +30,13 @@ function getTrustedNextUrl() {
 
 function getAuthRedirectUrl() {
   const trustedNextUrl = getTrustedNextUrl();
+  const callbackUrl = new URL('auth/callback.html', window.location.origin);
 
   if (trustedNextUrl) {
-    const callbackUrl = new URL('/auth/callback', trustedNextUrl.origin);
-    callbackUrl.searchParams.set('next', `${trustedNextUrl.pathname}${trustedNextUrl.search}`);
-    return callbackUrl.href;
+    callbackUrl.searchParams.set('next', trustedNextUrl.href);
   }
 
-  return new URL('auth/callback.html', window.location.origin).href;
+  return callbackUrl.href;
 }
 
 function getEmployeeEmail(session) {
