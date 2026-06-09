@@ -10,9 +10,11 @@ The production-now architecture is intentionally simple and path-based:
 - Employee login: `https://melodyvc.com/employee-login.html`
 - Supabase callback: `https://melodyvc.com/auth/callback.html`
 - Employee app directory: `https://melodyvc.com/apps.html`
-- ARIA status page: `https://melodyvc.com/aria.html`
+- ARIA app handoff/status page: `https://melodyvc.com/aria.html`
 - MAESTRO status page: `https://melodyvc.com/maestro.html`
 - CHORUS status page: `https://melodyvc.com/chorus.html`
+- ARIA workspace: `https://aria.melodyvc.com`
+- MAESTRO workspace: `https://maestro.melodyvc.com`
 
 The `CNAME` file points GitHub Pages at `melodyvc.com`.
 
@@ -52,6 +54,8 @@ https://melodyvc.com
 
 Redirect URLs:
 https://melodyvc.com/auth/callback.html
+https://aria.melodyvc.com/auth/callback
+https://maestro.melodyvc.com/auth/callback
 ```
 
 ## Google OAuth
@@ -77,7 +81,7 @@ The Google redirect URI points to Supabase, not directly to the website, because
 5. Supabase redirects to `https://melodyvc.com/auth/callback.html`.
 6. Callback checks for a valid session and allowed employee domain.
 7. Approved users land on `https://melodyvc.com/apps.html`.
-8. App tiles route to the authenticated ARIA, MAESTRO, and CHORUS status pages.
+8. App tiles route to the authenticated ARIA and MAESTRO workspaces, and the CHORUS status page.
 
 ## Important Security Note
 
@@ -97,13 +101,14 @@ Privacy requests are directed to:
 privacy@melodyvc.com
 ```
 
-## Subdomains Deferred
+## App Subdomains
 
-The long-term product shape may use:
+The long-term product shape uses:
 
 - `portal.melodyvc.com`
 - `aria.melodyvc.com`
 - `maestro.melodyvc.com`
 - `chorus.melodyvc.com`
 
-For production today, those are deferred in favor of the single-domain path setup above.
+For production today, ARIA and MAESTRO use app subdomains. The static
+`melodyvc.com` site remains the public site and employee app directory.
